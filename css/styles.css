@@ -47,12 +47,12 @@ ul { list-style: none; }
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 180px; /* Altura suficiente para el logo grande */
+    min-height: 140px; 
 }
 
-/* LOGO GRANDE PARA PC (INDEX) */
+/* LOGO PC: 160px */
 .index-logo-img {
-    height: 160px; /* TU MEDIDA PEDIDA PARA PC */
+    height: 160px; 
     width: auto;
     display: block;
     transition: transform 0.3s;
@@ -72,16 +72,16 @@ nav.desktop-nav a:hover { color: var(--primary); }
    ======================================================= */
 .header-catalog {
     position: relative; 
-    height: 200px; /* Espacio generoso */
+    height: 200px; 
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
 }
 
-/* LOGO GRANDE PARA PC (CATÁLOGO) */
+/* LOGO CATÁLOGO PC: 160px */
 .catalog-logo-creative {
-    height: 160px; /* TU MEDIDA PEDIDA PARA PC */
+    height: 160px; 
     width: auto;
     position: absolute;
     top: 10px;
@@ -103,20 +103,13 @@ nav.desktop-nav a:hover { color: var(--primary); }
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    background-color: var(--white);
-    color: var(--primary);
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 50px;
+    display: flex; align-items: center; justify-content: center;
+    width: 45px; height: 45px;
+    background-color: var(--white); color: var(--primary);
+    border: 1px solid rgba(0,0,0,0.08); border-radius: 50px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 20;
-    text-decoration: none;
+    overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 20; text-decoration: none;
 }
 .back-btn-creative svg { min-width: 20px; }
 .back-btn-creative span {
@@ -124,7 +117,7 @@ nav.desktop-nav a:hover { color: var(--primary); }
     font-weight: 800; font-size: 0.8rem; text-transform: uppercase;
     transition: all 0.3s ease;
 }
-/* Hover corregido para que no corte texto */
+/* Hover: 200px para que entre el texto completo */
 .back-btn-creative:hover {
     width: 200px;
     background-color: var(--primary); color: var(--white);
@@ -133,7 +126,39 @@ nav.desktop-nav a:hover { color: var(--primary); }
 .back-btn-creative:hover span { max-width: 180px; opacity: 1; margin-left: 10px; }
 
 
-/* --- RESTO DE ESTILOS (IGUAL QUE ANTES) --- */
+/* --- BUSCA ESTO EN TU ARCHIVO CSS (está al final) --- */
+
+.hero-product-img { 
+    width: 100%; 
+    height: 250px; 
+    
+    /* Mantenemos contain para que se vea la manga completa */
+    object-fit: contain;  
+    
+    border-radius: 15px; 
+    margin-bottom: 20px; 
+    display: block; 
+    
+    /* --- CAMBIO AQUÍ: --- */
+    /* Cambiamos el gris (#f0f2f5) por NEGRO (#000) para que se fusione con tu foto */
+    background-color: #ffffff; 
+}
+
+/* Para el cuadro gris (si se usa en otro lado) */
+.ui-image-placeholder { background-color: #f0f2f5; height: 250px; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+
+.product-card-ui { background: var(--white); width: 340px; padding: 20px; border-radius: 20px; box-shadow: var(--shadow-soft); position: relative; z-index: 2; animation: float 6s ease-in-out infinite; }
+@keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
+
+.ui-details h3 { font-size: 1.2rem; margin-bottom: 5px; text-align: center;}
+.ui-details p { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 15px; text-align: center;}
+.ui-price { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
+.floating-tag { position: absolute; top: 50px; right: -20px; background: var(--white); padding: 15px; border-radius: 15px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); z-index: 3; display: flex; align-items: center; gap: 10px; animation: float 6s ease-in-out infinite reverse; }
+.tag-icon { width: 40px; height: 40px; background: #eefbf0; color: #2e7d32; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+.tag-title { font-weight: bold; font-size: 0.9rem; }
+.tag-desc { font-size: 0.75rem; color: #888; }
+
+/* --- RESTO DE ESTILOS --- */
 .collection-link-styled { display: inline-flex; align-items: center; gap: 10px; margin-top: 25px; padding: 12px 35px; background-color: transparent; border: 2px solid var(--primary); border-radius: 50px; color: var(--primary); font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; position: relative; z-index: 5; transition: all 0.3s ease; }
 .collection-link-styled:hover { background-color: var(--primary); color: var(--white); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(37, 40, 80, 0.2); }
 .collection-link-styled svg { transition: transform 0.3s ease; }
@@ -149,18 +174,7 @@ nav.desktop-nav a:hover { color: var(--primary); }
 .hero-text { flex: 1; max-width: 550px; }
 h1 { font-size: 3.5rem; line-height: 1.1; color: var(--text-dark); margin-bottom: 20px; font-weight: 800; }
 .hero-subtext { font-size: 1.1rem; color: var(--text-gray); margin-bottom: 30px; max-width: 450px; }
-
 .hero-visual { flex: 1; display: flex; justify-content: center; position: relative; min-width: 320px; }
-.product-card-ui { background: var(--white); width: 340px; padding: 20px; border-radius: 20px; box-shadow: var(--shadow-soft); position: relative; z-index: 2; animation: float 6s ease-in-out infinite; }
-@keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0px); } }
-.ui-image-placeholder { background-color: #f0f2f5; height: 250px; border-radius: 15px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; color: var(--primary); }
-.ui-details h3 { font-size: 1.2rem; margin-bottom: 5px; text-align: center;}
-.ui-details p { color: var(--text-gray); font-size: 0.9rem; margin-bottom: 15px; text-align: center;}
-.ui-price { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
-.floating-tag { position: absolute; top: 50px; right: -20px; background: var(--white); padding: 15px; border-radius: 15px; box-shadow: 0 15px 30px rgba(0,0,0,0.1); z-index: 3; display: flex; align-items: center; gap: 10px; animation: float 6s ease-in-out infinite reverse; }
-.tag-icon { width: 40px; height: 40px; background: #eefbf0; color: #2e7d32; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
-.tag-title { font-weight: bold; font-size: 0.9rem; }
-.tag-desc { font-size: 0.75rem; color: #888; }
 
 .features { padding: 80px 0; background-color: transparent; }
 .features-header { margin-bottom: 60px; }
@@ -210,7 +224,7 @@ h1 { font-size: 3.5rem; line-height: 1.1; color: var(--text-dark); margin-bottom
 .whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background-color: #25d366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 100; transition: all 0.3s ease; }
 .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 16px rgba(0,0,0,0.4); }
 
-.catalog-title-section { text-align: center; margin-top: 60px; padding-bottom: 40px; }
+.catalog-title-section { text-align: center; margin-top: 40px; padding-bottom: 40px; }
 .catalog-title-section h1 { font-size: 3rem; color: var(--primary); margin-bottom: 10px; }
 .catalog-title-section p { font-size: 1.2rem; color: var(--text-gray); }
 .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding-bottom: 80px; }
@@ -221,66 +235,75 @@ h1 { font-size: 3.5rem; line-height: 1.1; color: var(--text-dark); margin-bottom
 .btn-buy-wa { background-color: #25d366; color: white; padding: 8px 18px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 8px; transition: all 0.3s; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); text-decoration: none; }
 .btn-buy-wa:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4); }
 
-/* =======================================================
-   RESPONSIVE / MÓVIL (ARREGLO DEFINITIVO)
-   ======================================================= */
+/* --- RESPONSIVE / MÓVIL (130PX LOGO Y SUBIDO) --- */
 @media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    .hero { flex-direction: column; text-align: center; }
+    .hero-text { margin-bottom: 50px; max-width: 100%; }
     
-    /* 1. Header Index Móvil: ORDENADO EN DOS FILAS */
+    /* 1. Header Index Móvil */
     .header-index { 
         height: auto; 
-        padding: 15px 0;
-        flex-wrap: wrap; /* Permitir que el menú baje */
-    }
-    
-    .index-logo-img { height: 100px; } /* Tamaño móvil seguro (130px rompe el ancho) */
-    
-    /* Forzar que el menú se vea abajo */
-    nav.desktop-nav { 
-        display: block !important;
-        width: 100%;
-        margin-top: 15px;
-        order: 3; /* Va al final */
-        border-top: 1px solid #eee;
+        padding: 0;
         padding-top: 10px;
+        flex-wrap: wrap; 
     }
-    nav.desktop-nav ul { justify-content: center; gap: 15px; }
     
+    .header-index .logo { order: 1; }
+    .header-index .auth-buttons { order: 2; }
     
-    /* 2. Header Catálogo Móvil: LOGO CONTROLADO */
+    /* LOGO MÓVIL: 130px (TU MEDIDA) */
+    .index-logo-img { height: 130px; } 
+    
+    /* Menú en Móvil */
+    nav.desktop-nav { 
+        display: block !important; 
+        order: 3;
+        width: 100%;
+        margin-top: 0; 
+        padding-top: 5px;
+        padding-bottom: 10px;
+        border-top: none;
+    }
+    nav.desktop-nav ul { 
+        justify-content: center; 
+        gap: 15px; 
+    }
+    nav.desktop-nav a { font-size: 0.85rem; }
+    
+    /* 2. Header Catálogo Móvil */
     .header-catalog {
-        height: 120px;
-        margin-top: 10px;
+        height: 140px; /* Altura suficiente para el logo de 130px */
+        margin-top: 0; 
+        margin-bottom: 10px;
         display: flex; 
-        justify-content: center;
+        justify-content: center; 
         align-items: center;
+        position: relative;
     }
     
-    /* Logo estático y más pequeño para móvil */
+    /* LOGO CATÁLOGO MÓVIL: 130px (TU MEDIDA) */
     .catalog-logo-creative {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        height: 100px; /* EN MÓVIL DEBE SER 80px, NO 130px */
-        animation: none;
+        position: static; 
+        transform: none; 
+        height: 130px; /* GRANDE */
+        animation: none; 
     }
     
-    /* Botón a la izquierda */
+    /* Botón flotante a la izquierda */
     .back-btn-creative {
         position: absolute;
         left: 0;
-        top: 50%;
-        transform: translateY(-50%);
+        top: 20px; /* Ajustado para que no se encima con el logo grande */
+        transform: none;
         width: 40px; 
         height: 40px;
     }
-    .back-btn-creative:hover { width: 40px; transform: translateY(-50%); }
+    .back-btn-creative:hover { width: 40px; transform: none; }
     .back-btn-creative span { display: none !important; }
 
-    /* Otros ajustes */
-    h1 { font-size: 2.5rem; text-align: center; }
-    .hero { flex-direction: column; text-align: center; }
     .collection-cards { grid-template-columns: 1fr; }
+    .stats-grid { gap: 40px; }
     .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
+    .dark-section { margin: 40px 10px; }
 }
