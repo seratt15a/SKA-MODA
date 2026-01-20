@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
             btn_contact: "Contacto",
             hero_title: "Tu estilo,<br>redefinido automáticamente.",
             hero_subtitle: "Una experiencia de compra diseñada para el minimalismo moderno. Telas premium, cortes exactos y entrega inmediata.",
-            card_product: "Chaqueta Oxford Midnight",
-            card_desc: "Algodón Premium • Corte Slim",
+            card_product: "Boxy Red Blasphemy",
+            card_desc: "Algodón Premium • Boxy Fit",
             tag_stock: "Stock Disponible",
             tag_shipping: "Envío en 24h",
             tagline_quality: "CALIDAD SUPERIOR",
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             step_3_desc: "Empaque premium sostenible directo a tu puerta. Listo para usar.",
             tagline_collections: "NUESTRAS COLECCIONES",
             coll_title: "Encuentra lo que te define",
-            coll_1_desc: "Para el día a día, sin perder la elegancia.",
+            coll_1_desc: "Una fusión entre ritmo y tela.",
             coll_link_1: "Explorar Catálogo →",
             cta_title: "¿Listo para mejorar tu guardarropa?",
             cta_btn: "Comenzar Ahora"
@@ -49,8 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
             btn_contact: "Contact",
             hero_title: "Your style,<br>automatically redefined.",
             hero_subtitle: "A shopping experience designed for modern minimalism. Premium fabrics, exact cuts, and immediate delivery.",
-            card_product: "Oxford Midnight Jacket",
-            card_desc: "Premium Cotton • Slim Fit",
+            card_product: "Boxy Red Blasphemy",
+            card_desc: "Premium Cotton • Boxy Fit",
             tag_stock: "Stock Available",
             tag_shipping: "24h Shipping",
             tagline_quality: "SUPERIOR QUALITY",
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             step_3_desc: "Sustainable premium packaging straight to your door. Ready to wear.",
             tagline_collections: "OUR COLLECTIONS",
             coll_title: "Find what defines you",
-            coll_1_desc: "For the everyday hustle, without losing elegance.",
+            coll_1_desc: "A fusion of rhythm and fabric.",
             coll_link_1: "Explore Catalog →",
             cta_title: "Ready to upgrade your wardrobe?",
             cta_btn: "Start Now"
@@ -104,6 +104,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- MENÚ HAMBURGUESA (MÓVIL) ---
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const menuLinks = document.querySelectorAll('.menu-link'); 
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('open');
+        });
+    }
+
+    // Cerrar menú al tocar un enlace
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            menuToggle.classList.remove('open');
+        });
+    });
+
+    // --- CONTADORES ---
     const counters = document.querySelectorAll('.counter');
     const speed = 200; 
 
