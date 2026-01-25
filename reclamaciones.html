@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libro de Reclamaciones - SKA</title>
+    <link rel="shortcut icon" href="assets/favicon.png?v=3" type="image/png">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        
+        <header class="header-legal">
+            <a href="index.html" class="logo">
+                <img src="assets/mi-logo.png" alt="SKA Logo" class="index-logo-img" style="height: 100px;">
+            </a>
+            <a href="index.html" class="btn-volver-creativo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Volver al Inicio
+            </a>
+        </header>
+
+        <div class="reclamaciones-container">
+            <div class="libro-header">
+                <img src="assets/libro-reclamaciones.png" alt="Libro de Reclamaciones" class="libro-icon">
+                <h1>Libro de Reclamaciones Virtual</h1>
+                <p>Conforme al Código de Protección y Defensa del Consumidor</p>
+            </div>
+
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label>Fecha:</label>
+                    <input type="date" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre Completo:</label>
+                    <input type="text" class="form-control" placeholder="Tu nombre y apellido" required>
+                </div>
+
+                <div class="form-group">
+                    <label>DNI / CE:</label>
+                    <input type="number" class="form-control" placeholder="Número de documento" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Teléfono:</label>
+                    <input type="tel" class="form-control" placeholder="999 999 999" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Correo Electrónico:</label>
+                    <input type="email" class="form-control" placeholder="tucorreo@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Tipo:</label>
+                    <select class="form-control">
+                        <option>Reclamo (Disconformidad con producto/servicio)</option>
+                        <option>Queja (Malestar en la atención)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Detalle del Reclamo o Queja:</label>
+                    <textarea class="form-control" placeholder="Cuéntanos qué sucedió..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-submit" onclick="alert('Tu reclamo ha sido registrado. Te contactaremos en breve.'); return false;">Enviar Hoja de Reclamación</button>
+            </form>
+
+            <p class="legal-note">SKA Clothing RUC: 10123456789. La empresa deberá dar respuesta al reclamo en un plazo no mayor a 15 días hábiles.</p>
+        </div>
+
+        <footer class="site-footer">
+            <div class="copyright">&copy; 2026 SKA Clothing.</div>
+        </footer>
+    </div>
+</body>
+</html>
