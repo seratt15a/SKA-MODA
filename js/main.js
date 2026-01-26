@@ -1,7 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("ModaPay Concepto Cargado");
 
+    // ==========================================
+    // 1. TRADUCCIONES (ESPAÑOL / INGLÉS)
+    // ==========================================
     const langToggleBtn = document.getElementById('lang-toggle');
+    
+    // Diccionario de textos
     const translations = {
         es: {
             nav_benefits: "Beneficios",
@@ -24,9 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
             feat_3_desc: "Coordina tu pago directo por WhatsApp con total seguridad y trato humano.",
             tagline_why: "POR QUÉ NOS ELIGEN",
             stats_title: "La marca preferida por los creadores",
-            stat_1: "Prendas Vendidas",
-            stat_2: "Clientes Satisfechos",
-            stat_3: "Tiempo de Entrega",
             tagline_steps: "PASO A PASO",
             steps_title: "Maximiza tu estilo con nuestra colección reservada.",
             step_1_title: "Elige tu Fit",
@@ -38,9 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
             tagline_collections: "NUESTRAS COLECCIONES",
             coll_title: "Encuentra lo que te define",
             coll_1_desc: "Una fusión entre ritmo y tela.",
-            coll_link_1: "Explorar Catálogo →",
+            coll_link_1: "EXPLORAR CATÁLOGO",
             cta_title: "¿Listo para mejorar tu guardarropa?",
-            cta_btn: "Comenzar Ahora"
+            cta_btn: "Hablar con un asesor"
         },
         en: {
             nav_benefits: "Benefits",
@@ -63,9 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
             feat_3_desc: "Coordinate your payment directly via WhatsApp with total security and human support.",
             tagline_why: "WHY CHOOSE US",
             stats_title: "The preferred brand for creators",
-            stat_1: "Items Sold",
-            stat_2: "Happy Customers",
-            stat_3: "Delivery Time",
             tagline_steps: "STEP BY STEP",
             steps_title: "Maximize your style with our reserved collection.",
             step_1_title: "Choose your Fit",
@@ -77,23 +76,29 @@ document.addEventListener('DOMContentLoaded', () => {
             tagline_collections: "OUR COLLECTIONS",
             coll_title: "Find what defines you",
             coll_1_desc: "A fusion of rhythm and fabric.",
-            coll_link_1: "Explore Catalog →",
+            coll_link_1: "EXPLORE CATALOG",
             cta_title: "Ready to upgrade your wardrobe?",
-            cta_btn: "Start Now"
+            cta_btn: "Chat with Advisor"
         }
     };
 
     let currentLang = 'es'; 
 
     if(langToggleBtn) {
-        langToggleBtn.addEventListener('click', () => {
+        langToggleBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Cambiar idioma
             currentLang = currentLang === 'es' ? 'en' : 'es';
+            // Actualizar texto del botón
             langToggleBtn.innerText = currentLang === 'es' ? 'EN' : 'ES';
 
+            // Buscar todos los elementos con etiqueta data-i18n
             const elements = document.querySelectorAll('[data-i18n]');
+            
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (translations[currentLang][key]) {
+                    // Si es el título principal, usamos innerHTML para respetar el <br>
                     if(key === 'hero_title') {
                         el.innerHTML = translations[currentLang][key];
                     } else {
@@ -104,7 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- MENÚ HAMBURGUESA (MÓVIL) ---
+    // ==========================================
+    // 2. MENÚ HAMBURGUESA (CELULAR)
+    // ==========================================
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.getElementById('nav-menu');
     const menuLinks = document.querySelectorAll('.menu-link'); 
@@ -112,35 +119,33 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('open');
+            
+            // Animación manual de las 3 rayitas (Spans)
+            // Esto es necesario porque tu CSS no usa la clase .open
+            const spans = menuToggle.querySelectorAll('span');
+            if (navMenu.classList.contains('active')) {
+                // Convertir en X
+                spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                // Volver a normal
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+
+        // Cerrar menú al tocar un enlace
+        menuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                // Restaurar rayitas
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
         });
     }
-
-    // Cerrar menú al tocar un enlace
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-            menuToggle.classList.remove('open');
-        });
-    });
-
-    // --- CONTADORES ---
-    const counters = document.querySelectorAll('.counter');
-    const speed = 200; 
-
-    counters.forEach(counter => {
-        const updateCount = () => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-            const inc = target / speed;
-
-            if (count < target) {
-                counter.innerText = Math.ceil(count + inc);
-                setTimeout(updateCount, 20); 
-            } else {
-                counter.innerText = target + "+";
-            }
-        };
-        updateCount();
-    });
 });
