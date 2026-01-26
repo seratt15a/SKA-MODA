@@ -85,15 +85,16 @@ nav.desktop-nav a:hover { color: var(--primary); }
 .stat-item h2 { font-size: 3rem; color: var(--primary); margin-bottom: 5px; }
 .stat-item p { color: var(--text-gray); font-weight: 500; }
 
+/* ESTILOS BASE DE LA SECCIÓN OSCURA (Para Desktop) */
 .dark-section { background-color: var(--primary); color: var(--white); padding: 100px 0; border-radius: 40px; margin: 40px 20px; box-shadow: 0 20px 40px rgba(37, 40, 80, 0.2); }
 .tagline-light { color: rgba(255,255,255,0.7); }
 .dark-content h2 { font-size: 2.5rem; margin-bottom: 60px; max-width: 600px; }
 .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-.step-card { background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s; }
+.step-card { background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.3s; position: relative; overflow: hidden; }
 .step-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.1); }
 .step-number { font-size: 3rem; font-weight: 800; opacity: 0.3; margin-bottom: 10px; display: block; }
-.step-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; display: block; }
-.step-desc { opacity: 0.7; font-size: 0.9rem; }
+.step-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; display: block; position: relative; z-index: 2; }
+.step-desc { opacity: 0.7; font-size: 0.9rem; position: relative; z-index: 2; }
 
 .collections { padding: 100px 0; background: var(--white); }
 .primary-heading { font-size: 2.5rem; color: var(--primary); }
@@ -275,29 +276,79 @@ nav.desktop-nav a:hover { color: var(--primary); }
     .collection-cards { grid-template-columns: 1fr; }
     .stats-grid { gap: 40px; }
     .whatsapp-float { bottom: 20px; right: 20px; width: 50px; height: 50px; }
-    .dark-section { margin: 40px 10px; }
+    
+    /* --- AQUÍ ESTÁ EL CAMBIO: FONDO AZUL + DISEÑO DE TARJETAS --- */
+    .dark-section { 
+        margin: 40px 0; 
+        padding: 40px 20px; 
+        /* Volvemos al color azul original */
+        background-color: var(--primary);
+        color: var(--white);
+        border-radius: 30px;
+    }
+    .dark-content h2 {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        color: var(--white); /* Título blanco */
+        padding: 0 10px;
+    }
+    .dark-content .tagline-light {
+        color: rgba(255,255,255,0.7); /* Tagline blanco translúcido */
+        padding: 0 10px;
+        opacity: 1;
+    }
+
+    .steps-grid { gap: 20px; padding: 0 10px; }
+
+    /* Tarjetas flotantes con fondo semitransparente sobre el azul */
+    .step-card {
+        background: rgba(255, 255, 255, 0.1); /* Fondo blanco semitransparente */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: none;
+        padding: 30px 25px;
+        text-align: center;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .step-number {
+        color: rgba(255, 255, 255, 0.15); /* Número gigante blanco sutil */
+        opacity: 1;
+        font-size: 5rem;
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 0;
+        margin-bottom: 0;
+    }
+    .step-title {
+        color: var(--white); /* Título blanco */
+        font-size: 1.3rem;
+        margin-top: 40px;
+        position: relative;
+        z-index: 2;
+    }
+    .step-desc {
+        color: rgba(255, 255, 255, 0.8); /* Descripción blanca translúcida */
+        opacity: 1;
+        position: relative;
+        z-index: 2;
+    }
+    /* --------------------------------------------------------- */
     
     .pre-footer-cta { padding: 40px 20px; margin: 20px 0 40px; }
     .pre-footer-cta h2 { font-size: 1.8rem; }
     .site-footer { padding-bottom: 90px; }
     
-    /* --- ARREGLO DEL FOOTER EN CELULAR --- */
-    .legal-links { 
-        flex-direction: column; /* Se ponen uno debajo de otro */
-        gap: 15px; /* Espacio entre ellos */
-    }
-    
-    /* Oculta las barritas | en celular para que se vea limpio */
-    .separator { display: none; } 
-    
-    .legal-links a {
-        padding: 5px 0;
-        font-size: 1rem;
-    }
+    /* --- FOOTER VERTICAL Y LIMPIO EN CELULAR --- */
+    .legal-links { flex-direction: column; gap: 10px; }
+    .legal-links span { display: none; }
 }
 
 /* =======================================================
-   10. ESTILOS LIBRO DE RECLAMACIONES (NUEVO AGREGADO)
+   10. ESTILOS LIBRO DE RECLAMACIONES
    ======================================================= */
 .reclamaciones-container {
     max-width: 700px;
